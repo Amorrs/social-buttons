@@ -1,0 +1,104 @@
+@import "variables";
+
+@mixin social-farben($primary-color, $secondary-color) {
+  background-color: $primary-color; //Handy Hintergrund
+  color: $secondary-color; //Handy Schriftfarbe(Logo)
+  @media screen and (orientation: landscape) { //Bei Horizontaler ansicht
+    background-color: $secondary-color;  //Hintergrund Logo
+    color: $primary-color; //Farbe Schrift (Logo)
+    .content {
+      background-color: $primary-color;  //Hintergrund Schrift
+    }
+    &:hover { // Alle farben wewrden beim Hoer gedreht
+      .logo {
+        background-color: $primary-color;
+        color: $secondary-color;
+      }
+      .content {
+        background-color: $secondary-color;
+        color: $primary-color;
+      }
+      .dreieck {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.button {
+  display: inline-flex;
+  position: relative;
+  margin: 2rem;
+  height: 3rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  color: black;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.3rem 0 0 0.3rem;
+    i {
+      font-size: 2.5rem;
+    }
+  }
+  .content {
+    display: none;
+  }
+  @media screen and (orientation: landscape) {
+    text-decoration: none;
+    border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+    transition: 0.3s;
+    .logo {
+      display: inline-flex;
+      width: 3rem;
+      height: 3rem;
+    }
+    .content {
+      display: inline-flex;
+      color: black;
+      width: 9rem;
+      height: 3rem;
+      border-radius: 0 0.3rem 0.3rem 0;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bolder;
+    }
+  };
+}
+.dreieck {
+  display: none;
+  position: absolute;
+  height: 2rem;
+  width: 1rem;
+  background-color: black;
+  left: 3rem;
+  top: 0.5rem;
+  clip-path: polygon(0 0, 100% 50%,0 100% );
+  @media screen and (orientation: landscape) {
+  display: block;
+  }
+}
+.facebook {
+  @include social-farben($facebook-color-1, black);
+}
+.twitter {
+  @include social-farben($twitter-color-1, black);
+}
+.spotify {
+  @include social-farben($spotify-colo-1, black);
+}
+
+
+
